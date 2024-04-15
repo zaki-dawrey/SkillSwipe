@@ -1,41 +1,57 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:skillswap/state/auth/providers/is_logged_in_provider.dart';
+import 'package:skillswap/state/providers/is_loading_provider.dart';
+import 'package:skillswap/utilities/widgets/bottom_nav.dart';
+import 'package:skillswap/views/components/loading/loading_screen.dart';
+import 'package:skillswap/views/login_page.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  await Supabase.initialize(
+    url: 'https://djrktyekzrnabxujxlnf.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRqcmt0eWVrenJuYWJ4dWp4bG5mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTMxMDMwOTMsImV4cCI6MjAyODY3OTA5M30.H-1K_0Rhk7syKojtStrprln--9uqSW1GjteuAtEdhac',
+  );
+
+  runApp(
+    const ProviderScope(
+      child: App(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+final supabase = Supabase.instance.client;
 
-  // This widget is the root of your application.
+class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'SkillSwap',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        brightness: Brightness.light,
+        primarySwatch: Colors.red,
       ),
-      home: const HomeView(),
-    );
-  }
-}
-
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "SkillSwap",
-          style: TextStyle(
-            color: Colors.green[700],
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: Colors.black,
+      debugShowCheckedModeBanner: false,
+      home: Consumer(
+        builder: (context, ref, child) {
+          ref.listen(isLoadingProvider, (_, isLoading) {
+            if (isLoading) {
+              LoadingScreen.instance().show(
+                context: context,
+              );
+            } else {
+              LoadingScreen.instance().hide();
+            }
+          });
+          final isLoggedIn = ref.watch(isLoggedInProvider);
+          if (isLoggedIn) {
+            return const BottomnavBar();
+          } else {
+            return const LoginPage();
+          }
+        },
       ),
     );
   }
