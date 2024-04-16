@@ -36,7 +36,7 @@ class HomeView extends ConsumerWidget {
             },
           )
         ],
-        backgroundColor: Colors.black,
+        backgroundColor: const Color(0xFF012333),
       ),
       body: Padding(
         padding: const EdgeInsets.all(25.0),
@@ -44,7 +44,7 @@ class HomeView extends ConsumerWidget {
           children: [
             Container(
               width: 400,
-              height: 550,
+              height: 560,
               decoration: ShapeDecoration(
                 color: const Color(0xFFEBF5ED),
                 shape: RoundedRectangleBorder(
@@ -56,7 +56,7 @@ class HomeView extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    SizedBox(height: 330),
+                    SizedBox(height: 350),
                     Text(
                       "Zaki Dawrey",
                       style: TextStyle(
@@ -85,7 +85,7 @@ class HomeView extends ConsumerWidget {
               ),
             ),
             const Positioned(
-              bottom: 25,
+              bottom: 30,
               left: 40,
               child: CircleAvatar(
                 radius: 30,
@@ -98,7 +98,7 @@ class HomeView extends ConsumerWidget {
               ),
             ),
             const Positioned(
-              bottom: 8,
+              bottom: 12,
               left: 140,
               child: CircleAvatar(
                 radius: 30,
@@ -111,7 +111,7 @@ class HomeView extends ConsumerWidget {
               ),
             ),
             const Positioned(
-              bottom: 25,
+              bottom: 30,
               right: 40,
               child: CircleAvatar(
                 radius: 30,

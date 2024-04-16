@@ -21,7 +21,7 @@ class _BottomnavBarState extends State<BottomnavBar> {
       //backgroundColor: Colors.red[900],
       body: _buildSelectedScreen(),
       bottomNavigationBar: Container(
-        color: Colors.black,
+        color: const Color(0xFF012333),
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 30.0,
