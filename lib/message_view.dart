@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:skillswap/in_message.dart';
 
 class MessageView extends StatelessWidget {
@@ -9,10 +10,12 @@ class MessageView extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Message",
-          style: TextStyle(
+          style: GoogleFonts.inter(
             color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
           ),
         ),
         backgroundColor: const Color(0xFF012333),

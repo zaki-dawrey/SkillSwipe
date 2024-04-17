@@ -1,8 +1,8 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:skillswap/state/auth/providers/is_logged_in_provider.dart';
 import 'package:skillswap/state/providers/is_loading_provider.dart';
+import 'package:skillswap/utilities/components/loading/loading_screen.dart';
 import 'package:skillswap/utilities/widgets/bottom_nav.dart';
-import 'package:skillswap/views/components/loading/loading_screen.dart';
 import 'package:skillswap/views/login_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter/material.dart';

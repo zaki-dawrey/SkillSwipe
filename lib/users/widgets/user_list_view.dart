@@ -29,7 +29,7 @@ class UserListView extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const CircleAvatar(
                 radius: 20,

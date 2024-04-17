@@ -3,7 +3,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:skillswap/explore_view.dart';
 import 'package:skillswap/home_view.dart';
 import 'package:skillswap/message_view.dart';
-import 'package:skillswap/profile_view.dart';
+import 'package:skillswap/views/profile_view.dart';
 
 class BottomnavBar extends StatefulWidget {
   const BottomnavBar({super.key});

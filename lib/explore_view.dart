@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ExploreView extends StatelessWidget {
   const ExploreView({super.key});
@@ -8,10 +9,12 @@ class ExploreView extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Explore",
-          style: TextStyle(
+          style: GoogleFonts.inter(
             color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
           ),
         ),
         backgroundColor: const Color(0xFF012333),

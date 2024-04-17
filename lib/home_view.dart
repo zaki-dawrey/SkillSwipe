@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:skillswap/state/auth/providers/auth_state_provider.dart';
 import 'package:skillswap/utilities/dialogs/logout_dialog.dart';
 
@@ -16,7 +16,7 @@ class HomeView extends ConsumerWidget {
           style: GoogleFonts.inter(
             color: Colors.white,
             fontSize: 20,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w400,
           ),
         ),
         actions: [
@@ -25,7 +25,7 @@ class HomeView extends ConsumerWidget {
               Icons.logout_outlined,
             ),
             color: Colors.white,
-            iconSize: 28,
+            iconSize: 25,
             tooltip: 'Logout',
             onPressed: () async {
               bool logoutConfirmed = await showLogOutDialog(context);
