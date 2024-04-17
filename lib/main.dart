@@ -1,4 +1,4 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:skillswap/state/auth/providers/is_logged_in_provider.dart';
 import 'package:skillswap/state/providers/is_loading_provider.dart';
 import 'package:skillswap/utilities/widgets/bottom_nav.dart';
@@ -31,7 +31,6 @@ class App extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         brightness: Brightness.light,
-        primarySwatch: Colors.red,
       ),
       debugShowCheckedModeBanner: false,
       home: Consumer(
