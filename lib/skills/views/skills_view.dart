@@ -14,42 +14,47 @@ class _SkillsViewState extends ConsumerState<SkillsView> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        color: Colors.grey[200],
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Your Skill',
-                style: GoogleFonts.inter(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
+      child: RefreshIndicator(
+        onRefresh: () async {
+          ref.refresh(skillsNotifierProvider);
+        },
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          color: Colors.grey[200],
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Your Skill',
+                  style: GoogleFonts.inter(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Expanded(
-                child: SkillsListView(),
-              ),
-              Text(
-                'Your Interest',
-                style: GoogleFonts.inter(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
+                const SizedBox(
+                  height: 10,
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Expanded(
-                child: InterestsListView(),
-              ),
-            ],
+                const Expanded(
+                  child: SkillsListView(),
+                ),
+                Text(
+                  'Your Interest',
+                  style: GoogleFonts.inter(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Expanded(
+                  child: InterestsListView(),
+                ),
+              ],
+            ),
           ),
         ),
       ),

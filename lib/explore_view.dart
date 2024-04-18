@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:skillswap/skills/providers/skills_notifier.dart';
 
-class ExploreView extends StatelessWidget {
+class ExploreView extends ConsumerWidget {
   const ExploreView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final skillsNotifier = ref.watch(skillsNotifierProvider);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -59,77 +62,50 @@ class ExploreView extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Container(
-              width: size.width,
-              height: 500,
-              decoration: const BoxDecoration(
-                color: Colors.white,
+          Expanded(
+            child: Container(
+              child: skillsNotifier.when(
+                error: (err, _) => const Center(
+                  child: Text(
+                    'Error fetching Skills',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                data: (data) {
+                  return ListView.builder(
+                    itemCount: data.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding:
+                            const EdgeInsets.only(top: 12, left: 12, right: 12),
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[100],
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: ListTile(
+                            onTap: () {},
+                            title: Text(
+                              data[index].name,
+                              maxLines: 2,
+                              softWrap: true,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
-              child: GridView.count(
-                primary: false,
-                padding: const EdgeInsets.all(18),
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                crossAxisCount: 2,
-                children: <Widget>[
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFEBF5ED),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFEBF5ED),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFEBF5ED),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFEBF5ED),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFEBF5ED),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFEBF5ED),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFEBF5ED),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                ],
-              )),
+            ),
+          )
         ],
       ),
       backgroundColor: Colors.white,

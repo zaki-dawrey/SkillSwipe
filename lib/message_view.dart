@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skillswap/in_message.dart';
+import 'package:skillswap/messages/chat_page.dart';
 
 class MessageView extends StatelessWidget {
   const MessageView({super.key});
@@ -31,7 +32,7 @@ class MessageView extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const InMessage()),
+                  MaterialPageRoute(builder: (context) => const ChatPage()),
                 );
               },
               child: Padding(
@@ -68,7 +69,7 @@ class MessageView extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              "You have been accepted!",
+                              "Sent a message",
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w300,
@@ -77,61 +78,6 @@ class MessageView extends StatelessWidget {
                           ],
                         ),
                       )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const InMessage()),
-                );
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Container(
-                  width: size.width,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: const Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: CircleAvatar(
-                          radius: 23,
-                          backgroundColor: Colors.white,
-                          child: Icon(
-                            Icons.person,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Prasad Ghadge",
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Text(
-                              "You have been accepted!",
-                              style: TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
                     ],
                   ),
                 ),
