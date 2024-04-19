@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:skillswap/state/auth/providers/auth_state_provider.dart';
+import 'package:skillswap/swipecard/widgets/card_view.dart';
+import 'package:skillswap/swipecard/widgets/swipecard_list_view.dart';
 import 'package:skillswap/utilities/dialogs/logout_dialog.dart';
 
 class HomeView extends ConsumerWidget {
@@ -38,94 +40,7 @@ class HomeView extends ConsumerWidget {
         ],
         backgroundColor: const Color(0xFF012333),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(25.0),
-        child: Stack(
-          children: [
-            Container(
-              width: 400,
-              height: 560,
-              decoration: ShapeDecoration(
-                color: const Color(0xFFEBF5ED),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SizedBox(height: 350),
-                    Text(
-                      "Zaki Dawrey",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      "Skills: Coding, Video Editing",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      "Interests: Video Editing",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const Positioned(
-              bottom: 30,
-              left: 40,
-              child: CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.clear,
-                  color: Colors.red,
-                  size: 50,
-                ),
-              ),
-            ),
-            const Positioned(
-              bottom: 12,
-              left: 140,
-              child: CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.star,
-                  color: Colors.yellow,
-                  size: 50,
-                ),
-              ),
-            ),
-            const Positioned(
-              bottom: 30,
-              right: 40,
-              child: CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.check,
-                  color: Colors.green,
-                  size: 50,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      body: const SwipeCardView(),
     );
   }
 }

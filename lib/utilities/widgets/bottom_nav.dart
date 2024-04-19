@@ -4,6 +4,7 @@ import 'package:skillswap/explore_view.dart';
 import 'package:skillswap/home_view.dart';
 import 'package:skillswap/message_view.dart';
 import 'package:skillswap/views/profile_view.dart';
+import 'package:skillswap/views/swipe_card.dart';
 
 class BottomnavBar extends StatefulWidget {
   const BottomnavBar({super.key});

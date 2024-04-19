@@ -81,8 +81,8 @@ class ExploreView extends ConsumerWidget {
                     itemCount: data.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding:
-                            const EdgeInsets.only(top: 12, left: 12, right: 12),
+                        padding: const EdgeInsets.only(
+                            bottom: 12, left: 12, right: 12),
                         child: Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(

@@ -39,6 +39,8 @@ dependencies:
   flutter_dotenv: ^5.1.0
   swipe_cards: ^2.0.0+1
   timeago: ^3.6.1
+  swipeable_card_stack: ^0.0.5
+  flutter_card_swiper: ^7.0.0
 
 dev_dependencies:
   flutter_test:
