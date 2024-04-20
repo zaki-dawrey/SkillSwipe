@@ -9,4 +9,8 @@ class SwipecardNotifier extends _$SwipecardNotifier {
   Future<List<Swipecard>> build() async {
     return ref.read(swipecardRepositoryProvider).getSwipecard();
   }
+
+  void updateList(List<Swipecard> updatedList) {
+    state = AsyncData(updatedList);
+  }
 }

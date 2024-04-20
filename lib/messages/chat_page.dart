@@ -9,9 +9,6 @@ import 'package:skillswap/utilities/components/constants/message_constants.dart'
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timeago/timeago.dart';
 
-/// Page to chat with someone.
-///
-/// Displays chat bubbles as a ListView and TextField to enter new chat.
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
 
@@ -89,12 +86,6 @@ class _ChatPageState extends State<ChatPage> {
                           itemCount: messages.length,
                           itemBuilder: (context, index) {
                             final message = messages[index];
-
-                            /// I know it's not good to include code that is not related
-                            /// to rendering the widget inside build method, but for
-                            /// creating an app quick and dirty, it's fine 😂
-                            // _loadProfileCache(message.profileId);
-
                             return _ChatBubble(
                               message: message,
                               // profile: _profileCache[message.profileId],
@@ -114,7 +105,6 @@ class _ChatPageState extends State<ChatPage> {
   }
 }
 
-/// Set of widget that contains TextField and Button to submit message
 class _MessageBar extends StatefulWidget {
   const _MessageBar({
     super.key,

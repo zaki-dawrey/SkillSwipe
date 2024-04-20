@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:skillswap/state/auth/providers/auth_state_provider.dart';
-import 'package:skillswap/swipecard/widgets/card_view.dart';
 import 'package:skillswap/swipecard/widgets/swipecard_list_view.dart';
 import 'package:skillswap/utilities/dialogs/logout_dialog.dart';
 
@@ -14,7 +13,7 @@ class HomeView extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "SkillSwap",
+          "SkillSwipe",
           style: GoogleFonts.inter(
             color: Colors.white,
             fontSize: 20,

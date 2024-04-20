@@ -8,49 +8,47 @@ class SkillsListView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final skillsNotifier = ref.watch(skillsNotifierProvider);
-    return Expanded(
-      child: Container(
-        child: skillsNotifier.when(
-          error: (err, _) => const Center(
-            child: Text(
-              'Error fetching Skills',
-              style: TextStyle(
-                color: Colors.white,
-              ),
+    return Container(
+      child: skillsNotifier.when(
+        error: (err, _) => const Center(
+          child: Text(
+            'Error fetching Skills',
+            style: TextStyle(
+              color: Colors.white,
             ),
           ),
-          loading: () => const Center(
-            child: CircularProgressIndicator(),
-          ),
-          data: (data) {
-            final userData = ref.read(usersNotifierProvider).value ?? [];
-            final userSkillSet = userData.map((user) => user.skillId).toSet();
-            final filteredData =
-                data.where((skills) => userSkillSet.contains(skills.id)).toList();
-        
-            return ListView.builder(
-              itemCount: filteredData.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: ListTile(
-                    onTap: () {},
-                    title: Text(
-                      filteredData[index].name,
-                      maxLines: 2,
-                      softWrap: true,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                );
-              },
-            );
-          },
         ),
+        loading: () => const Center(
+          child: CircularProgressIndicator(),
+        ),
+        data: (data) {
+          final userData = ref.read(usersNotifierProvider).value ?? [];
+          final userSkillSet = userData.map((user) => user.skillId).toSet();
+          final filteredData =
+              data.where((skills) => userSkillSet.contains(skills.id)).toList();
+
+          return ListView.builder(
+            itemCount: filteredData.length,
+            itemBuilder: (context, index) {
+              return Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: ListTile(
+                  onTap: () {},
+                  title: Text(
+                    filteredData[index].name,
+                    maxLines: 2,
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }
