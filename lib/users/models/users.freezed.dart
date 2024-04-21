@@ -28,8 +28,6 @@ mixin _$Users {
   String get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'skill_id')
   int get skillId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'profile_picture')
-  String get profilePicture => throw _privateConstructorUsedError;
   @JsonKey(name: 'interested_id')
   int get interestedId => throw _privateConstructorUsedError;
 
@@ -48,7 +46,6 @@ abstract class $UsersCopyWith<$Res> {
       @JsonKey(name: 'username') String username,
       @JsonKey(name: 'desc') String description,
       @JsonKey(name: 'skill_id') int skillId,
-      @JsonKey(name: 'profile_picture') String profilePicture,
       @JsonKey(name: 'interested_id') int interestedId});
 }
 
@@ -69,7 +66,6 @@ class _$UsersCopyWithImpl<$Res, $Val extends Users>
     Object? username = null,
     Object? description = null,
     Object? skillId = null,
-    Object? profilePicture = null,
     Object? interestedId = null,
   }) {
     return _then(_value.copyWith(
@@ -89,10 +85,6 @@ class _$UsersCopyWithImpl<$Res, $Val extends Users>
           ? _value.skillId
           : skillId // ignore: cast_nullable_to_non_nullable
               as int,
-      profilePicture: null == profilePicture
-          ? _value.profilePicture
-          : profilePicture // ignore: cast_nullable_to_non_nullable
-              as String,
       interestedId: null == interestedId
           ? _value.interestedId
           : interestedId // ignore: cast_nullable_to_non_nullable
@@ -113,7 +105,6 @@ abstract class _$$UsersImplCopyWith<$Res> implements $UsersCopyWith<$Res> {
       @JsonKey(name: 'username') String username,
       @JsonKey(name: 'desc') String description,
       @JsonKey(name: 'skill_id') int skillId,
-      @JsonKey(name: 'profile_picture') String profilePicture,
       @JsonKey(name: 'interested_id') int interestedId});
 }
 
@@ -132,7 +123,6 @@ class __$$UsersImplCopyWithImpl<$Res>
     Object? username = null,
     Object? description = null,
     Object? skillId = null,
-    Object? profilePicture = null,
     Object? interestedId = null,
   }) {
     return _then(_$UsersImpl(
@@ -152,10 +142,6 @@ class __$$UsersImplCopyWithImpl<$Res>
           ? _value.skillId
           : skillId // ignore: cast_nullable_to_non_nullable
               as int,
-      profilePicture: null == profilePicture
-          ? _value.profilePicture
-          : profilePicture // ignore: cast_nullable_to_non_nullable
-              as String,
       interestedId: null == interestedId
           ? _value.interestedId
           : interestedId // ignore: cast_nullable_to_non_nullable
@@ -172,7 +158,6 @@ class _$UsersImpl implements _Users {
       @JsonKey(name: 'username') required this.username,
       @JsonKey(name: 'desc') required this.description,
       @JsonKey(name: 'skill_id') required this.skillId,
-      @JsonKey(name: 'profile_picture') required this.profilePicture,
       @JsonKey(name: 'interested_id') required this.interestedId});
 
   factory _$UsersImpl.fromJson(Map<String, dynamic> json) =>
@@ -191,15 +176,12 @@ class _$UsersImpl implements _Users {
   @JsonKey(name: 'skill_id')
   final int skillId;
   @override
-  @JsonKey(name: 'profile_picture')
-  final String profilePicture;
-  @override
   @JsonKey(name: 'interested_id')
   final int interestedId;
 
   @override
   String toString() {
-    return 'Users(id: $id, username: $username, description: $description, skillId: $skillId, profilePicture: $profilePicture, interestedId: $interestedId)';
+    return 'Users(id: $id, username: $username, description: $description, skillId: $skillId, interestedId: $interestedId)';
   }
 
   @override
@@ -213,16 +195,14 @@ class _$UsersImpl implements _Users {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.skillId, skillId) || other.skillId == skillId) &&
-            (identical(other.profilePicture, profilePicture) ||
-                other.profilePicture == profilePicture) &&
             (identical(other.interestedId, interestedId) ||
                 other.interestedId == interestedId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, username, description,
-      skillId, profilePicture, interestedId);
+  int get hashCode => Object.hash(
+      runtimeType, id, username, description, skillId, interestedId);
 
   @JsonKey(ignore: true)
   @override
@@ -240,13 +220,12 @@ class _$UsersImpl implements _Users {
 
 abstract class _Users implements Users {
   const factory _Users(
-      {@JsonKey(name: 'id') required final String id,
-      @JsonKey(name: 'username') required final String username,
-      @JsonKey(name: 'desc') required final String description,
-      @JsonKey(name: 'skill_id') required final int skillId,
-      @JsonKey(name: 'profile_picture') required final String profilePicture,
-      @JsonKey(name: 'interested_id')
-      required final int interestedId}) = _$UsersImpl;
+          {@JsonKey(name: 'id') required final String id,
+          @JsonKey(name: 'username') required final String username,
+          @JsonKey(name: 'desc') required final String description,
+          @JsonKey(name: 'skill_id') required final int skillId,
+          @JsonKey(name: 'interested_id') required final int interestedId}) =
+      _$UsersImpl;
 
   factory _Users.fromJson(Map<String, dynamic> json) = _$UsersImpl.fromJson;
 
@@ -262,9 +241,6 @@ abstract class _Users implements Users {
   @override
   @JsonKey(name: 'skill_id')
   int get skillId;
-  @override
-  @JsonKey(name: 'profile_picture')
-  String get profilePicture;
   @override
   @JsonKey(name: 'interested_id')
   int get interestedId;

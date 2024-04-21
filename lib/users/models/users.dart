@@ -11,7 +11,6 @@ class Users with _$Users {
     @JsonKey(name: 'username') required String username,
     @JsonKey(name: 'desc') required String description,
     @JsonKey(name: 'skill_id') required int skillId,
-    @JsonKey(name: 'profile_picture') required String profilePicture,
     @JsonKey(name: 'interested_id') required int interestedId,
   }) = _Users;
 

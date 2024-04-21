@@ -1,127 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:hooks_riverpod/hooks_riverpod.dart';
-// import 'package:skillswap/main.dart';
-// import 'package:skillswap/swipecard/providers/swipecard_notifier.dart';
-// import 'package:flutter_card_swiper/flutter_card_swiper.dart';
-
-// class SwipeCardView extends ConsumerWidget {
-//   const SwipeCardView({super.key});
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final user = supabase.auth.currentUser?.id;
-//     final swipecardNotifier = ref.watch(swipecardNotifierProvider);
-//     return swipecardNotifier.when(
-//         error: (err, _) => const Center(
-//               child: Text(
-//                 'Error fetching Card Data',
-//                 style: TextStyle(
-//                   color: Colors.black,
-//                 ),
-//               ),
-//             ),
-//         loading: () => const Center(
-//               child: CircularProgressIndicator(),
-//             ),
-//         data: (data) {
-//           if (data.isEmpty) {
-//             return const Center(child: Text('No cards available'));
-//           } else {
-//             return Column(
-//               children: [
-//                 SizedBox(
-//                   height: 600,
-//                   child: CardSwiper(
-//                       cardsCount: data.length,
-//                       cardBuilder: (context, index, x, y) {
-//                         return ClipRRect(
-//                           borderRadius: BorderRadius.circular(12),
-//                           child: Container(
-//                             width: 400,
-//                             height: 300,
-//                             decoration: ShapeDecoration(
-//                               color: const Color(0xFFEBF5ED),
-//                               shape: RoundedRectangleBorder(
-//                                 borderRadius: BorderRadius.circular(12),
-//                               ),
-//                             ),
-//                             child: Padding(
-//                               padding: const EdgeInsets.all(12),
-//                               child: Column(
-//                                 crossAxisAlignment: CrossAxisAlignment.start,
-//                                 children: <Widget>[
-//                                   const SizedBox(height: 350),
-//                                   Text(
-//                                     data[index].username,
-//                                     style: GoogleFonts.inter(
-//                                       fontSize: 16,
-//                                       color: Colors.black,
-//                                     ),
-//                                   ),
-//                                   const SizedBox(height: 10),
-//                                   Text(
-//                                     data[index].skillName,
-//                                     textAlign: TextAlign.center,
-//                                     style: GoogleFonts.inter(
-//                                         fontSize: 15,
-//                                         color: Colors.black,
-//                                         fontWeight: FontWeight.w300),
-//                                   ),
-//                                   const SizedBox(height: 10),
-//                                   Text(
-//                                     data[index].interestedSkillName,
-//                                     textAlign: TextAlign.center,
-//                                     style: GoogleFonts.inter(
-//                                         fontSize: 15,
-//                                         color: Colors.black,
-//                                         fontWeight: FontWeight.w300),
-//                                   ),
-//                                 ],
-//                               ),
-//                             ),
-//                           ),
-//                         );
-//                       },
-//                       allowedSwipeDirection: const AllowedSwipeDirection.only(
-//                           right: true, left: true),
-//                       isLoop: false,
-//                       onSwipe: (prevoius, current, direction) async {
-//                         // currentindex = current!;
-//                         if (direction == CardSwiperDirection.right) {
-//                           final swipeCard = data[current!];
-//                           await supabase.rpc('like_swipe', params: {
-//                             'current_user_id': user,
-//                             'other_user_id': swipeCard.userId,
-//                             'is_like': true,
-//                           });
-//                           // data.removeAt(current!);
-//                           // ref
-//                           //     .read(swipecardNotifierProvider.notifier)
-//                           //     .updateList(data);
-//                         } else if (direction == CardSwiperDirection.left) {
-//                           final swipeCard = data[current!];
-//                           await supabase.rpc('like_swipe', params: {
-//                             'current_user_id': user,
-//                             'other_user_id': swipeCard.userId,
-//                             'is_like': false,
-//                           });
-//                           // data.removeAt(current!);
-//                           // ref
-//                           //     .read(swipecardNotifierProvider.notifier)
-//                           //     .updateList(data);
-//                         }
-//                         return true;
-//                       }),
-//                 ),
-//               ],
-//             );
-//           }
-//         });
-//   }
-// }
-
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -132,7 +8,6 @@ import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
 class SwipeCardView extends ConsumerWidget {
   const SwipeCardView({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = supabase.auth.currentUser?.id;
@@ -197,9 +72,6 @@ class SwipeCardView extends ConsumerWidget {
                 // Ensure the previous and current indexes are valid
                 if (current != null && current < data.length) {
                   final swipeCard = data[previous];
-                  print(previous);
-                  print(swipeCard.userId);
-                  print(swipeCard.username);
 
                   if (direction == CardSwiperDirection.right) {
                     await supabase.rpc('like_swipe', params: {
@@ -223,57 +95,6 @@ class SwipeCardView extends ConsumerWidget {
       );
     }
   }
-
-//   Widget _buildCard(BuildContext context, Swipecard cardData) {
-//     return ClipRRect(
-//       borderRadius: BorderRadius.circular(12),
-//       child: Container(
-//         width: 400,
-//         height: 300,
-//         decoration: BoxDecoration(
-//           color: const Color(0xFFEBF5ED),
-//           borderRadius: BorderRadius.circular(12),
-//         ),
-//         child: Padding(
-//           padding: const EdgeInsets.all(12),
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: <Widget>[
-//               const SizedBox(height: 350),
-//               Text(
-//                 cardData.username,
-//                 style: GoogleFonts.inter(
-//                   fontSize: 16,
-//                   color: Colors.black,
-//                 ),
-//               ),
-//               const SizedBox(height: 10),
-//               Text(
-//                 cardData.skillName,
-//                 textAlign: TextAlign.center,
-//                 style: GoogleFonts.inter(
-//                   fontSize: 15,
-//                   color: Colors.black,
-//                   fontWeight: FontWeight.w300,
-//                 ),
-//               ),
-//               const SizedBox(height: 10),
-//               Text(
-//                 cardData.interestedSkillName,
-//                 textAlign: TextAlign.center,
-//                 style: GoogleFonts.inter(
-//                   fontSize: 15,
-//                   color: Colors.black,
-//                   fontWeight: FontWeight.w300,
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
 
   Widget _buildCard(BuildContext context, Swipecard cardData) {
     return ClipRRect(

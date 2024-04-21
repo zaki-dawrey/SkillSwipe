@@ -4,7 +4,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:skillswap/messages/message.dart';
-import 'package:skillswap/messages/profile.dart';
 import 'package:skillswap/utilities/components/constants/message_constants.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timeago/timeago.dart';
@@ -24,7 +23,6 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   late final Stream<List<Message>> _messagesStream;
-  final Map<String, Profile> _profileCache = {};
 
   @override
   void initState() {
@@ -37,19 +35,6 @@ class _ChatPageState extends State<ChatPage> {
             .map((map) => Message.fromMap(map: map, myUserId: myUserId))
             .toList());
     super.initState();
-  }
-
-  // ignore: unused_element
-  Future<void> _loadProfileCache(String profileId) async {
-    if (_profileCache[profileId] != null) {
-      return;
-    }
-    final data =
-        await supabase.from('user').select().eq('id', profileId).single();
-    final profile = Profile.fromMap(data);
-    setState(() {
-      _profileCache[profileId] = profile;
-    });
   }
 
   @override
@@ -88,7 +73,6 @@ class _ChatPageState extends State<ChatPage> {
                             final message = messages[index];
                             return _ChatBubble(
                               message: message,
-                              // profile: _profileCache[message.profileId],
                             );
                           },
                         ),
@@ -106,9 +90,7 @@ class _ChatPageState extends State<ChatPage> {
 }
 
 class _MessageBar extends StatefulWidget {
-  const _MessageBar({
-    super.key,
-  });
+  const _MessageBar();
 
   @override
   State<_MessageBar> createState() => _MessageBarState();
@@ -185,24 +167,13 @@ class _MessageBarState extends State<_MessageBar> {
 
 class _ChatBubble extends StatelessWidget {
   const _ChatBubble({
-    super.key,
     required this.message,
-    // required this.profile,
   });
 
   final Message message;
-  // final Profile? profile;
-
   @override
   Widget build(BuildContext context) {
     List<Widget> chatContents = [
-      // if (!message.isMine)
-      //   CircleAvatar(
-      //     child: profile == null
-      //         ? preloader
-      //         : Text(profile!.username.substring(0, 2)),
-      //   ),
-      // const SizedBox(width: 12),
       Flexible(
         child: Container(
           padding: const EdgeInsets.symmetric(

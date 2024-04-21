@@ -9,7 +9,6 @@ class ExploreView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final skillsNotifier = ref.watch(skillsNotifierProvider);
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -25,36 +24,16 @@ class ExploreView extends ConsumerWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Container(
-              width: size.width,
-              height: 50,
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: const Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 8.0), // Adjust as needed
-                child: TextField(
-                  // Integrate TextField here
-                  decoration: InputDecoration(
-                    border: InputBorder.none, // Remove default TextField border
-                    hintText: 'Search',
-                    prefixIcon: Icon(Icons.search),
-                  ),
-                ),
-              ),
-            ),
+          const SizedBox(
+            height: 10,
           ),
           const Padding(
             padding: EdgeInsets.only(left: 18),
             child: Text(
-              "Recommended For You",
+              "Skills Recommended For You",
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 15,
+                fontSize: 17,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -77,7 +56,7 @@ class ExploreView extends ConsumerWidget {
                   child: CircularProgressIndicator(),
                 ),
                 data: (data) {
-                  return ListView.builder(
+                  return GridView.builder(
                     itemCount: data.length,
                     itemBuilder: (context, index) {
                       return Padding(
@@ -86,21 +65,40 @@ class ExploreView extends ConsumerWidget {
                         child: Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: Colors.grey[100],
-                            borderRadius: BorderRadius.circular(12),
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                Colors.grey.shade200, // Start color
+                                Colors.grey.shade300, // End color
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              12,
+                            ),
                           ),
                           child: ListTile(
                             onTap: () {},
-                            title: Text(
-                              data[index].name,
-                              maxLines: 2,
-                              softWrap: true,
-                              overflow: TextOverflow.ellipsis,
+                            title: Center(
+                              child: Text(
+                                data[index].name,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
+                                maxLines: 2,
+                                softWrap: true,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
                           ),
                         ),
                       );
                     },
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                    ),
                   );
                 },
               ),

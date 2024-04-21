@@ -12,6 +12,20 @@ class UsersRepository {
 
   Future<List<Users>> getUsers() => _client
       .from('user')
-      .select('id, username, desc, skill_id, profile_picture, interested_id')
+      .select('id, username, desc, skill_id, interested_id')
       .then((data) => data.map((json) => Users.fromJson(json)).toList());
+
+
+  Future<void> addUser({
+    required String username,
+    required String desc,
+    required int skillId,
+    required int interestedSkillId,
+  }) =>
+      _client.from('user').insert({
+        'username': username,
+        'desc': desc,
+        'skill_id': skillId,
+        'interested_id': interestedSkillId,
+      });
 }

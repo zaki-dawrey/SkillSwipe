@@ -19,129 +19,150 @@ class LoginPage extends ConsumerWidget {
     final emailController = ref.read(emailControllerProvider);
     final passwordController = ref.read(passwordControllerProvider);
     return Scaffold(
-      backgroundColor: Colors.grey[300],
-      body: SafeArea(
-        child: Form(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 25.0,
+      // backgroundColor: Colors.blueGrey,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.teal.shade200, // Start color
+              Colors.teal.shade800, // End color
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: Form(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 20,
                   ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      //border: Border.all(color: Colors.blueGrey),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: TextFormField(
-                        controller: emailController,
-                        style: const TextStyle(
-                          color: Colors.black,
-                        ),
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Email',
-                          hintStyle: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your email';
-                          }
-
-                          return null;
-                        },
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                //password textfield
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 25.0,
+                  const SizedBox(
+                    height: 10,
                   ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      //border: Border.all(color: Colors.blueGrey),
-                      borderRadius: BorderRadius.circular(12),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 25.0,
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: TextFormField(
-                        controller: passwordController,
-                        obscureText: true,
-                        style: const TextStyle(
-                          color: Colors.black,
-                        ),
-                        decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Password',
-                            hintStyle: TextStyle(
-                              color: Colors.grey,
-                            )),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your password';
-                          }
-
-                          return null;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                //signin button
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 25.0,
-                  ),
-                  child: CupertinoButton(
-                    padding: const EdgeInsets.all(20),
                     child: Container(
-                      alignment: Alignment.center,
-                      width: double.infinity,
-                      height: size.height * 0.070,
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: Colors.grey[200],
+                        //border: Border.all(color: Colors.blueGrey),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Text(
-                        "Sign In",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: TextFormField(
+                          controller: emailController,
+                          style: const TextStyle(
+                            color: Colors.black,
+                          ),
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Email',
+                            hintStyle: TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your email';
+                            }
+
+                            return null;
+                          },
                         ),
                       ),
                     ),
-                    onPressed: () {
-                      ref
-                          .read(authStateProvider.notifier)
-                          .loginWithEmailPassword(
-                            emailController.text,
-                            passwordController.text,
-                          );
-                    },
                   ),
-                ),
-              ],
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  //password textfield
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 25.0,
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        //border: Border.all(color: Colors.blueGrey),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: TextFormField(
+                          controller: passwordController,
+                          obscureText: true,
+                          style: const TextStyle(
+                            color: Colors.black,
+                          ),
+                          decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Password',
+                              hintStyle: TextStyle(
+                                color: Colors.grey,
+                              )),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your password';
+                            }
+
+                            return null;
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 25.0,
+                    ),
+                    child: CupertinoButton(
+                      padding: const EdgeInsets.all(20),
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: double.infinity,
+                        height: size.height * 0.070,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF012333),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Text(
+                          "Sign In",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        ref
+                            .read(authStateProvider.notifier)
+                            .loginWithEmailPassword(
+                              emailController.text,
+                              passwordController.text,
+                            );
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -149,5 +170,3 @@ class LoginPage extends ConsumerWidget {
     );
   }
 }
-
-

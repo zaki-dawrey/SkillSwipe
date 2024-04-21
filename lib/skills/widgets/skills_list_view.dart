@@ -31,7 +31,6 @@ class SkillsListView extends ConsumerWidget {
             itemCount: filteredData.length,
             itemBuilder: (context, index) {
               return Container(
-                padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),

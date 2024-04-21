@@ -6,7 +6,7 @@ part of 'swipecard_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$swipecardNotifierHash() => r'0859644a0800a9ddf145d63ab250f034db8f5f5b';
+String _$swipecardNotifierHash() => r'ddb8929d40d102d8edcc0cc437ea5e5cf9342a26';
 
 /// See also [SwipecardNotifier].
 @ProviderFor(SwipecardNotifier)

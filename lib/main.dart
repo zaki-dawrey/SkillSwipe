@@ -9,9 +9,8 @@ import 'package:flutter/material.dart';
 
 Future<void> main() async {
   await Supabase.initialize(
-    url: 'https://djrktyekzrnabxujxlnf.supabase.co',
-    anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRqcmt0eWVrenJuYWJ4dWp4bG5mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTMxMDMwOTMsImV4cCI6MjAyODY3OTA5M30.H-1K_0Rhk7syKojtStrprln--9uqSW1GjteuAtEdhac',
+    url: '',
+    anonKey: '',
   );
 
   runApp(

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:skillswap/explore_view.dart';
-import 'package:skillswap/home_view.dart';
-import 'package:skillswap/message_view.dart';
+import 'package:skillswap/views/explore_view.dart';
+import 'package:skillswap/views/home_view.dart';
+import 'package:skillswap/views/message_view.dart';
 import 'package:skillswap/views/profile_view.dart';
-import 'package:skillswap/views/swipe_card.dart';
 
 class BottomnavBar extends StatefulWidget {
   const BottomnavBar({super.key});

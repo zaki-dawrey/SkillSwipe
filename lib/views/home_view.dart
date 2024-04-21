@@ -30,7 +30,6 @@ class HomeView extends ConsumerWidget {
             tooltip: 'Logout',
             onPressed: () async {
               bool logoutConfirmed = await showLogOutDialog(context);
-
               if (logoutConfirmed) {
                 ref.read(authStateProvider.notifier).logOut();
               }

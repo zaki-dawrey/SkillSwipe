@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:skillswap/in_message.dart';
 import 'package:skillswap/messages/chat_page.dart';
 
 class MessageView extends StatelessWidget {
@@ -62,7 +61,7 @@ class MessageView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Samee Shaikh",
+                              "Alice",
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
