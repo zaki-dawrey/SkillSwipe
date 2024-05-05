@@ -11,18 +11,6 @@ Here're some of the project's best features:
 *   Swipe to find mentors
 *   Message mentors you have matched with
 
-<h2>🛠️ Installation Steps:</h2>
-
-<p>1. Login Details</p>
-
-```
-Email: zdawrey@gmail.com
-```
-
-```
-Password: 123456
-```
-
 <h2>📱 Screenshots</h2>
 
 <img src="https://github.com/zaki-dawrey/SkillSwipe/assets/40626722/5cbbc4d5-3313-473d-9e2e-41928e84ebf8" alt="Image description" width="250" height="500">
